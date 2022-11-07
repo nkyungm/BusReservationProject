@@ -1,5 +1,6 @@
 # BusReservationProject
 
+경민 경로 - C:\Users\AS010-7244-9414\Desktop\BusReservation\BusReservationProject 
 1️⃣ git add .
 
 2️⃣ git commit -m "수정내용"
