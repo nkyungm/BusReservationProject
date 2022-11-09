@@ -15,3 +15,9 @@
 6️⃣ git push
 
 7️⃣ git checkout develop ❗❗
+
+
+### ERD 설계✏
+
+![image](https://user-images.githubusercontent.com/87464750/200810030-1bdc1e51-1f23-4ccb-a2a3-696ec3e4f34b.png)
+
