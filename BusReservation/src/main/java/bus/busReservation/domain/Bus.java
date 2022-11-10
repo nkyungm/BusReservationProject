@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 public class Bus {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bus_id")
     private Long id;
 

@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 public class Reservation {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne

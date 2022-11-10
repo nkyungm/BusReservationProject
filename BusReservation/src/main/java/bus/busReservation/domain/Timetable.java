@@ -1,15 +1,16 @@
 package bus.busReservation.domain;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.sql.Timestamp;
 
 @Entity
 public class Timetable {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private Timestamp time;
+    private Time time;
 
     @Column(nullable = false)
     private boolean status;
