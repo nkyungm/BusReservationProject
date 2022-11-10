@@ -1,4 +1,4 @@
-package BusReservation.BusReservation.domain;
+package bus.busReservation.domain;
 
 import com.sun.istack.NotNull;
 import lombok.NonNull;

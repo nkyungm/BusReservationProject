@@ -1,4 +1,4 @@
-package BusReservation.BusReservation.domain;
+package bus.busReservation.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
