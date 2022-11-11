@@ -17,13 +17,13 @@
 7️⃣ git checkout develop ❗❗
 
 # git 공동작업
-1️⃣ # git checkout master
+1️⃣ # git checkout main
 
-2️⃣ # git pull origin master
+2️⃣ # git pull origin main
 
-3️⃣ # git checkout brchA
+3️⃣ # git checkout develop
 
-4️⃣ # git merge master
+4️⃣ # git merge main
 
 // 현재 브랜치는 brchB
 
