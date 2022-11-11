@@ -16,18 +16,25 @@
 
 7️⃣ git checkout develop ❗❗
 
+# git 공동작업
+1️⃣ # git checkout master
 
-# git checkout master
-# git pull origin master
-# git checkout brchA
-# git merge master
+2️⃣ # git pull origin master
+
+3️⃣ # git checkout brchA
+
+4️⃣ # git merge master
 
 // 현재 브랜치는 brchB
-# git add .
-# git commit -m "기능 구현 완료"
-# git checkout master
-# git merge brchB
-# git push origin master
+5️⃣ # git add .
+
+6️⃣ # git commit -m "기능 구현 완료"
+
+7️⃣ # git checkout master
+
+8️⃣ # git merge brchB
+
+9️⃣ # git push origin master
 
 
 ### ERD 설계✏
