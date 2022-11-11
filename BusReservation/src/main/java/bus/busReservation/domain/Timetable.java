@@ -1,10 +1,13 @@
 package bus.busReservation.domain;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import java.sql.Time;
 import java.sql.Timestamp;
 
 @Entity
+@Getter
 public class Timetable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,4 +25,5 @@ public class Timetable {
     @ManyToOne
     @JoinColumn(name = "bus_id", nullable = false)
     private Bus bus;
+
 }
