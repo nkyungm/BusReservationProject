@@ -26,6 +26,7 @@
 4️⃣ # git merge master
 
 // 현재 브랜치는 brchB
+
 5️⃣ # git add .
 
 6️⃣ # git commit -m "기능 구현 완료"
