@@ -1,4 +1,14 @@
 # BusReservationProject
+### ❗❗ ERROR ❗❗
+<details>
+<summary> 부트스트랩 연결 안되는 경우 🤣 </summary>
+<div markdown="1">
+
+### < link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" > 넣기
+
+
+</div>
+</details>
 
 경민 경로 - C:\Users\AS010-7244-9414\Desktop\BusReservation\BusReservationProject 
 
