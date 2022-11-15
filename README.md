@@ -1,4 +1,14 @@
 # BusReservationProject
+### ❗❗ ERROR ❗❗
+<details>
+<summary> 부트스트랩 연결 안되는 경우 🤣 </summary>
+<div markdown="1">
+
+### < link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" > 넣기
+
+
+</div>
+</details>
 
 경민 경로 - C:\Users\AS010-7244-9414\Desktop\BusReservation\BusReservationProject 
 
@@ -40,5 +50,5 @@
 
 ### ERD 설계✏
 
-![image](https://user-images.githubusercontent.com/87464750/200812126-4a8bd803-48ee-4b99-9967-43577a9a6243.png)
+![image](https://user-images.githubusercontent.com/87464750/201874464-4003d3d5-935e-4466-a5db-1558d840cdaa.png)
 

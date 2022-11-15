@@ -1,6 +1,4 @@
 package bus.busReservation.repository;
-
-import bus.busReservation.domain.Bus;
 import bus.busReservation.domain.Timetable;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -13,6 +11,11 @@ import java.util.List;
 public class TimeTableRepository {
 
     private final EntityManager em;
+    //All 조회
+    public List<Timetable> findAll(){
+        return em.createQuery("select t from Timetable t", Timetable.class)
+                .getResultList();
+    }
     //버스 이름으로 조회
     public List<Timetable> findByBusName(String name){
 

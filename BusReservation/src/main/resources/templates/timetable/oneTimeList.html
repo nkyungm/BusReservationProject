@@ -61,26 +61,26 @@
     </div>
 
     <div class="container">
-    <div class="bg-light p-0 rounded">
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-2">
-            <a href="/timetables" class="btn btn-link btn-lg px-4 me-sm-3 fw-bold">저상버스 운행정보</a>
-            <a href="/timetables" class="btn btn-light btn-lg px-4">승차예약</a>
+        <div class="bg-light p-0 rounded">
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-2">
+                <a href="/timetables" class="btn btn-link btn-lg px-4 me-sm-3 fw-bold">저상버스 운행정보</a>
+                <a href="/timetables" class="btn btn-light btn-lg px-4">승차예약</a>
+            </div>
         </div>
-    </div>
     </div>
 
     <hr width = "100%" color = "#506FD1">
 
-        <div class="container">
-            <div class="bg-light p-0 rounded">
-                <select onchange="location.href=this.value" name="Id" id="bus" class="form-control" style="width:100%;height:50px;" >
-                    <option value="">노선선택</option>
-                    <option th:each="bus : .${busList}"
-                            th:value="${bus.name}"
-                            th:text="${bus.name}"/>
-                </select>
-            </div>
+    <div class="container">
+        <div class="bg-light p-0 rounded">
+            <select onchange="location.href=this.value" name="Id" id="bus" class="form-control" style="width:100%;height:50px;" >
+                <option value="">노선선택</option>
+                <option th:each="bus : ${busList}"
+                        th:value="${bus.name}"
+                        th:text="${bus.name}"/>
+            </select>
         </div>
+    </div>
 
 
     <br>
