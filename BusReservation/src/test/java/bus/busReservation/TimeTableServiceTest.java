@@ -23,7 +23,7 @@ public class TimeTableServiceTest {
     @Test
     public void  버스_시간표_조회() throws Exception {
         //given
-        List<Timetable> timetableList = timeTableService.findTimetable("300");
+        List<Timetable> timetableList = timeTableService.findTimetable("100");
 
         System.out.println(timetableList.size());
     }
