@@ -25,5 +25,4 @@ public class Timetable {
     @ManyToOne
     @JoinColumn(name = "bus_id", nullable = false)
     private Bus bus;
-
 }
