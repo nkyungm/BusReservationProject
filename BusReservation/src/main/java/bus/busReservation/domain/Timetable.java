@@ -1,5 +1,6 @@
 package bus.busReservation.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ public class Timetable {
     private Long id;
 
     @Column(nullable = false)
+    //@Temporal(TemporalType.TIME)
     private Time time;
 
     @Column(nullable = false)
