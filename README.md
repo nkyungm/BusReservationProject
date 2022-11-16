@@ -47,6 +47,8 @@
 
 9️⃣ # git push origin main
 
+ 마지막 9번째 오류나는 경우
+https://soy3on.tistory.com/42
 
 ### ERD 설계✏
 
