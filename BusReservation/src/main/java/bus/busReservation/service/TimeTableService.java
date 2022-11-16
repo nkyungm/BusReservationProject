@@ -1,7 +1,10 @@
 package bus.busReservation.service;
 
+import bus.busReservation.domain.Bus;
 import bus.busReservation.domain.Timetable;
+import bus.busReservation.repository.BusRepository;
 import bus.busReservation.repository.TimeTableRepository;
+import bus.busReservation.route.One;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,12 +14,14 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
+@Transactional
 public class TimeTableService {
 
     private final TimeTableRepository timeTableRepository;
+    private final BusRepository busRepository;
+    private final BusService busService;
 
-    //버스 이름 별로 조희
+    //버스 이름 별
     public List<Timetable> findTimetable(String name){
         return timeTableRepository.findByBusName(name);
     }

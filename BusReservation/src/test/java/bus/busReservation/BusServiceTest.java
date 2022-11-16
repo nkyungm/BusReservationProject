@@ -26,4 +26,10 @@ public class BusServiceTest {
             System.out.println("bus = " + bus.getName());
         }
     }
+
+    @Test
+    public void 정류장개수_찾기(){
+        int cnt = busService.findCnt("100");
+        System.out.println("cnt = " + cnt);
+    }
 }

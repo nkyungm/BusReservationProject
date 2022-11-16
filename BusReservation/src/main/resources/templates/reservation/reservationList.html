@@ -81,6 +81,7 @@
         <tbody>
         <!-- CONTENTS !-->
         <tr th:each="timetable : ${timetableList}">
+<<<<<<< HEAD
           <td>
             <span th:text="${timetable.bus_name}"></span>
           </td>
@@ -93,6 +94,21 @@
           <td>
             <button type="button" class="btn btn-warning">승차예약</button>
           </td>
+=======
+            <td>
+                <span th:text="${timetable.bus_name}"></span>
+            </td>
+            <td>
+                <span th:text="${timetable.busStop_name}"></span>
+
+            </td>
+            <td>
+                <span th:text="${timetable.time}"></span>
+            </td>
+            <td>
+                <button>예약하기</button>
+            </td>
+>>>>>>> f802ef118d8d3d83e6b57298d4bbeb91e3f51022
         </tr>
         </tbody>
     </table>

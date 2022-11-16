@@ -1,8 +1,10 @@
 package bus.busReservation.domain;
 
+
 import com.sun.istack.NotNull;
 
 import lombok.Getter;
+
 
 
 import javax.persistence.*;
@@ -20,6 +22,7 @@ public class Bus {
     @Column(name="출발지",nullable = false)
     private Integer cnt;
 
-    @Column(name="차량번호",nullable=false)
+
+    @Column(name = "차량번호", nullable = false)
     private String num;
 }
