@@ -35,17 +35,17 @@
 
 4️⃣ # git merge main
 
-// 현재 브랜치는 brchB
+
 
 5️⃣ # git add .
 
 6️⃣ # git commit -m "기능 구현 완료"
 
-7️⃣ # git checkout master
+7️⃣ # git checkout main
 
-8️⃣ # git merge brchB
+8️⃣ # git merge develop
 
-9️⃣ # git push origin master
+9️⃣ # git push origin main
 
 
 ### ERD 설계✏
