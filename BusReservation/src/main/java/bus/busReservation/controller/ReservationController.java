@@ -19,14 +19,14 @@ public class ReservationController {
 
     @RequestMapping("/reservation")
     public String res(){
-        return "/reservation/reservationList";
+        return "reservation/reservationList";
     }
 
     @RequestMapping("/reservation/search")
     public String reservation(@RequestParam(value="keyword") String keyword,Model model){
         List<TimetableDto> timetableDtoList=reservationService.findByBusStopName(keyword);
         model.addAttribute("timetableList",timetableDtoList);
-        return "/reservation/reservationList";
+        return "reservation/reservationList";
     }
 
 }
