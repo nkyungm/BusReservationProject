@@ -13,12 +13,12 @@ import java.sql.Time;
 
 public class TimetableDto {
     private String bus_name;
-    private String busstop_name;
+    private String busStop_name;
     private Time time;
 
     public TimetableDto(Timetable timetable){
         bus_name= timetable.getBus().getName();
-        busstop_name=timetable.getBusStop().getName();
+        busStop_name=timetable.getBusStop().getName();
         time=timetable.getTime();
     }
 }

@@ -1,7 +1,9 @@
 package bus.busReservation.domain;
 
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Time;
@@ -9,6 +11,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Getter
+@Setter
 public class Timetable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

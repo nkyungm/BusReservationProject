@@ -2,6 +2,7 @@ package bus.busReservation.controller;
 
 import bus.busReservation.domain.Bus;
 import bus.busReservation.domain.Timetable;
+import bus.busReservation.route.One;
 import bus.busReservation.service.BusService;
 import bus.busReservation.service.TimeTableService;
 import lombok.RequiredArgsConstructor;
@@ -20,10 +21,7 @@ public class TimetableController {
 
     @GetMapping("/timetables")
     public String timetableList(Model model){
-        List<Timetable> timetables = timeTableService.findAll();//timetable에 있는 모든 버스의 시간표
         List<Bus> busList = busService.findAllName();//버스 이름 찾기
-
-        model.addAttribute("timetables", timetables);
         model.addAttribute("busList", busList);
 
         return "timetable/timeList";
@@ -31,9 +29,13 @@ public class TimetableController {
 
     @GetMapping("/{busName}")
     public String oneTimetables(@PathVariable("busName") String busName,Model model){
-        List<Timetable> timetables = timeTableService.findTimetable(busName);//timetable에 있는 해당 이름의 버스 시간표
-        List<Bus> busList = busService.findAllName();//버스 이름 찾기
 
+        int c = busService.findCnt(busName);
+
+        List<Bus> busList = busService.findAllName();//버스 이름 찾기
+        List<Timetable> timetables = timeTableService.findTimetable(busName);
+
+        model.addAttribute("c", c);
         model.addAttribute("timetables", timetables);
         model.addAttribute("busList", busList);
 

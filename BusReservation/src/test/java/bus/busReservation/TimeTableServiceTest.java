@@ -2,7 +2,9 @@ package bus.busReservation;
 
 import bus.busReservation.domain.Timetable;
 import bus.busReservation.repository.TimeTableRepository;
+import bus.busReservation.route.One;
 import bus.busReservation.service.TimeTableService;
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +22,4 @@ public class TimeTableServiceTest {
     @Autowired TimeTableRepository timeTableRepository;
     @Autowired TimeTableService timeTableService;
 
-    @Test
-    public void  버스_시간표_조회() throws Exception {
-        //given
-        List<Timetable> timetableList = timeTableService.findTimetable("100");
-
-        System.out.println(timetableList.size());
-    }
 }

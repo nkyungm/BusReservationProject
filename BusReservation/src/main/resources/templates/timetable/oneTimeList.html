@@ -88,15 +88,22 @@
 
     <div class="container">
         <table class="table table-striped col-sm-8 py-5 mx-auto">
-            <thread>
-                <tr>
-                </tr>
-            </thread>
+            <thead>
+            <tr>
+                <th scope="col">차량번호</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">정류장</th>
+                <th scope="col">시간</th>
+            </tr>
+            </thead>
             <tbody>
-            <tr th:each="timetable : ${timetables}">
-                <td th:text="${timetable.bus.name}"></td>
+            <tr th:each="timetable : ${timetables} ">
+                <th th:unless="${timetable.busStop.id eq c}"></th>
+                <th th:text="${timetable.bus.num}" th:if="${timetable.busStop.id eq c}"></th>
+                <th th:text="출발" th:if="${timetable.busStop.id eq c}"></th>
+                <th th:unless="${timetable.busStop.id eq c}"></th>
                 <td th:text="${timetable.busStop.name}"></td>
-                <td th:text="${timetable.time}"></td>
+                <td th:text="${timetable.time}"> </td>
             </tr>
             </tbody>
         </table>

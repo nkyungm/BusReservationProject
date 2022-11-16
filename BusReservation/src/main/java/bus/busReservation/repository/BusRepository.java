@@ -17,4 +17,12 @@ public class BusRepository {
         return em.createQuery("select b from Bus b", Bus.class)
                 .getResultList();
     }
+
+    //버스 이름에 해당하는 것만 찾기
+    public List<Bus> findByName(String busName) {
+        return em.createQuery("select b from Bus b"
+                + " where b.name like :name", Bus.class)
+                .setParameter("name", busName)
+                .getResultList();
+    }
 }

@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, 그리고 Bootstrap 기여자들">
     <meta name="generator" content="Hugo 0.104.2">
-    <title>Carousel Template · Bootstrap v5.2</title>
+    <title>Bus Reservation</title>
 
     <link rel="canonical" href="https://getbootstrap.kr/docs/5.2/examples/carousel/">
     <link rel="canonical" href="https://getbootstrap.kr/docs/5.2/examples/checkout/">
@@ -64,7 +64,7 @@
     <div class="bg-light p-0 rounded">
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-2">
             <a href="/timetables" class="btn btn-link btn-lg px-4 me-sm-3 fw-bold">저상버스 운행정보</a>
-            <a href="/timetables" class="btn btn-light btn-lg px-4">승차예약</a>
+            <a href="/reservation" class="btn btn-light btn-lg px-4">승차예약</a>
         </div>
     </div>
     </div>
@@ -75,7 +75,7 @@
             <div class="bg-light p-0 rounded">
                 <select onchange="location.href=this.value" name="Id" id="bus" class="form-control" style="width:100%;height:50px;" >
                     <option value="">노선선택</option>
-                    <option th:each="bus : .${busList}"
+                    <option th:each="bus :${busList}"
                             th:value="${bus.name}"
                             th:text="${bus.name}"/>
                 </select>
@@ -85,22 +85,6 @@
 
     <br>
     <hr width = "100%" color = "#506FD1">
-
-    <div class="container">
-        <table class="table table-striped col-sm-8 py-5 mx-auto">
-            <thread>
-                <tr>
-                </tr>
-            </thread>
-            <tbody>
-            <tr th:each="timetable : ${timetables}">
-                <td th:text="${timetable.bus.name}"></td>
-                <td th:text="${timetable.busStop.name}"></td>
-                <td th:text="${timetable.time}"></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
 
     <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">&copy; 2022 Bus_Reservation < Soeun and Kyungm > </p>
