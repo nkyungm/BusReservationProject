@@ -69,11 +69,7 @@
             <div class="bg-light p-0 rounded">
                 <select onchange="location.href=this.value" name="Id" id="bus" class="form-control" style="width:100%;height:50px;" >
                     <option value="">노선선택</option>
-<<<<<<< HEAD
-                    <option th:each="bus : ${busList}"
-=======
                     <option th:each="bus :${busList}"
->>>>>>> f802ef118d8d3d83e6b57298d4bbeb91e3f51022
                             th:value="${bus.name}"
                             th:text="${bus.name}"/>
                 </select>

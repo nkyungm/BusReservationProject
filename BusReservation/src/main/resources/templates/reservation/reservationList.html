@@ -64,12 +64,12 @@
   <hr width = "100%" color = "#506FD1">
 
   <div class="container">
-        <div class="container-fluid">
-          <form class="input-group mb-1" action="/reservation/search" method="GET">
-            <input type="search" name="keyword"  class="form-control" placeholder="승차예약 하려는 정류소를 입력하시오" aria-label="Search" aria-describedby="button-addon2">
-            <button class="btn btn-outline-primary" type="submit" id="button-addon2">검색</button>
-          </form>
-        </div>
+    <div class="container-fluid">
+      <form class="input-group mb-1" action="/reservation/search" method="GET">
+        <input type="search" name="keyword"  class="form-control" placeholder="승차예약 하려는 정류소를 입력하시오" aria-label="Search" aria-describedby="button-addon2">
+        <button class="btn btn-outline-primary" type="submit" id="button-addon2">검색</button>
+      </form>
+    </div>
   </div>
 
   <br>
@@ -78,39 +78,23 @@
   <div class="container">
 
     <table class="table table-hover col-sm-8 py-5 mx-auto" >
-        <tbody>
-        <!-- CONTENTS !-->
-        <tr th:each="timetable : ${timetableList}">
-<<<<<<< HEAD
-          <td>
-            <span th:text="${timetable.bus_name}"></span>
-          </td>
-          <td>
-            <span th:text="${timetable.busStop_name}"></span>
-          </td>
-          <td>
-            <span th:text="${timetable.time}"></span>
-          </td>
-          <td>
-            <button type="button" class="btn btn-warning">승차예약</button>
-          </td>
-=======
-            <td>
-                <span th:text="${timetable.bus_name}"></span>
-            </td>
-            <td>
-                <span th:text="${timetable.busStop_name}"></span>
-
-            </td>
-            <td>
-                <span th:text="${timetable.time}"></span>
-            </td>
-            <td>
-                <button>예약하기</button>
-            </td>
->>>>>>> f802ef118d8d3d83e6b57298d4bbeb91e3f51022
-        </tr>
-        </tbody>
+      <tbody>
+      <!-- CONTENTS !-->
+      <tr th:each="timetable : ${timetableList}">
+        <td>
+          <span th:text="${timetable.bus_name}"></span>
+        </td>
+        <td>
+          <span th:text="${timetable.busStop_name}"></span>
+        </td>
+        <td>
+          <span th:text="${timetable.time}"></span>
+        </td>
+        <td>
+          <button type="button" class="btn btn-warning">승차예약</button>
+        </td>
+      </tr>
+      </tbody>
     </table>
   </div>
 
