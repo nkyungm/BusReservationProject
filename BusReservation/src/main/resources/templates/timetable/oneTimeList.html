@@ -62,13 +62,14 @@
     <div class="container">
         <div class="bg-light p-0 rounded">
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-2">
-                <a href="/timetables" class="btn btn-link btn-lg px-4 me-sm-3 fw-bold">저상버스 운행정보</a>
-                <a href="/timetables" class="btn btn-light btn-lg px-4">승차예약</a>
+                <a href="/" class="btn btn-link btn-lg px-4 me-sm-3 fw-bold">저상버스 운행정보</a>
+                <a href="/reservation" class="btn btn-light btn-lg px-4">승차예약</a>
             </div>
         </div>
     </div>
 
     <hr width = "100%" color = "#506FD1">
+    <br>
 
     <div class="container">
         <div class="bg-light p-0 rounded">
@@ -84,6 +85,10 @@
 
     <br>
     <hr width = "100%" color = "#506FD1">
+
+    <h1  th:text="${busName}" style="text-align:center;"> </h1>
+    <h1  style="text-align:center;">저상버스 시간표</h1>
+    <br>
 
     <div class="container">
         <table class="table table-striped col-sm-8 py-5 mx-auto">

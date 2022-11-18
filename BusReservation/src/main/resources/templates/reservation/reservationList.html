@@ -52,16 +52,19 @@
     </div>
   </div>
 
+  <br>
+
   <div class="container">
     <div class="bg-light p-0 rounded">
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-2">
-        <a href="/timetables" class="btn btn-light btn-lg px-4">저상버스 운행정보</a>
+        <a href="/" class="btn btn-light btn-lg px-4">저상버스 운행정보</a>
         <a href="/reservation" class="btn btn-link btn-lg px-4 me-sm-3 fw-bold">승차예약</a>
       </div>
     </div>
   </div>
 
   <hr width = "100%" color = "#506FD1">
+  <br>
 
   <div class="container">
         <div class="container-fluid">
@@ -76,42 +79,18 @@
   <hr width = "100%" color = "#506FD1">
 
   <div class="container">
-
-    <table class="table table-hover col-sm-8 py-5 mx-auto" >
+      <table class="table table-hover col-sm-8 py-5 mx-auto" >
         <tbody>
-        <!-- CONTENTS !-->
         <tr th:each="timetable : ${timetableList}">
-<<<<<<< HEAD
+          <td th:text="${timetable.bus_name}"></td>
+          <td th:text="${timetable.busStop_name}"></td>
+          <td th:text="${timetable.time}"></td>
           <td>
-            <span th:text="${timetable.bus_name}"></span>
+            <a th:href="@{/reservation/{id}/{name} (id=${timetable.id}, name=${timetable.bus_name})}" class="btn btn-warning" role="button">예약</a>
           </td>
-          <td>
-            <span th:text="${timetable.busStop_name}"></span>
-          </td>
-          <td>
-            <span th:text="${timetable.time}"></span>
-          </td>
-          <td>
-            <button type="button" class="btn btn-warning">승차예약</button>
-          </td>
-=======
-            <td>
-                <span th:text="${timetable.bus_name}"></span>
-            </td>
-            <td>
-                <span th:text="${timetable.busStop_name}"></span>
-
-            </td>
-            <td>
-                <span th:text="${timetable.time}"></span>
-            </td>
-            <td>
-                <button>예약하기</button>
-            </td>
->>>>>>> f802ef118d8d3d83e6b57298d4bbeb91e3f51022
         </tr>
         </tbody>
-    </table>
+      </table>
   </div>
 
   <footer class="my-5 pt-5 text-muted text-center text-small">
