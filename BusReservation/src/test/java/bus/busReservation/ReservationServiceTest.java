@@ -2,7 +2,6 @@ package bus.busReservation;
 
 import bus.busReservation.domain.Timetable;
 import bus.busReservation.dto.TimetableDto;
-import bus.busReservation.repository.ReservationRepo;
 import bus.busReservation.service.ReservationService;
 import org.junit.Test;
 import org.junit.runner.RunWith;

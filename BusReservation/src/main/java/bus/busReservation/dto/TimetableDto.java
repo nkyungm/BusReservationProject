@@ -15,10 +15,12 @@ public class TimetableDto {
     private String bus_name;
     private String busStop_name;
     private Time time;
+    private Long id;
 
     public TimetableDto(Timetable timetable){
         bus_name= timetable.getBus().getName();
         busStop_name=timetable.getBusStop().getName();
         time=timetable.getTime();
+        id = timetable.getId();
     }
 }

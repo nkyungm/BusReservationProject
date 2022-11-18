@@ -19,9 +19,8 @@ public class Bus {
     @Column(nullable = false)
     private String name;
 
-    @Column(name="출발지",nullable = false)
-    private Integer cnt;
-
+    @Column(name="출발정류장",nullable = false)
+    private Long cnt;
 
     @Column(name = "차량번호", nullable = false)
     private String num;

@@ -30,4 +30,8 @@ public class Timetable {
     @ManyToOne
     @JoinColumn(name = "bus_id", nullable = false)
     private Bus bus;
+
+    //==비즈니스 로직==//
+    //상태 변경하는거 있어야 함
+
 }

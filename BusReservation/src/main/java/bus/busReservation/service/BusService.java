@@ -26,7 +26,7 @@ public class BusService {
     }
 
     //특정 버스의 정류장 개수
-    public int findCnt(String name){
+    public Long findCnt(String name){
 
         List<Bus> busList = busRepository.findByName(name);
 
@@ -36,6 +36,6 @@ public class BusService {
             return bus.getCnt();//버스 정류장의 회차 번호 반환
         }
 
-        return 0;
+        return null;
     }
 }
