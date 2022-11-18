@@ -1,5 +1,6 @@
 package bus.busReservation.repository;
 
+import bus.busReservation.domain.Reservation;
 import bus.busReservation.domain.Timetable;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.query.criteria.internal.expression.function.CurrentTimeFunction;
@@ -17,10 +18,10 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class ReservationRepo {
+public class ReservationRepository {
 
     private final EntityManager em;
-    //버스 이름으로 조회
+    //버스 정류장으로 조회
     public List<Timetable> findByBusStopName(String name) {
         return em.createQuery("select t from Timetable t "+
                         "join t.busStop s" +
@@ -29,5 +30,10 @@ public class ReservationRepo {
                         "group by t.bus.name,s.name order by t.time asc", Timetable.class)
                 .setParameter("name", name)
                 .getResultList();
+    }
+
+    //예약 정보 저장
+    public void save(Reservation reservation) {
+        em.persist(reservation);
     }
 }

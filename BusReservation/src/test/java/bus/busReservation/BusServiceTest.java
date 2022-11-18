@@ -29,7 +29,7 @@ public class BusServiceTest {
 
     @Test
     public void 정류장개수_찾기(){
-        int cnt = busService.findCnt("100");
+        Long cnt = busService.findCnt("100");
         System.out.println("cnt = " + cnt);
     }
 }

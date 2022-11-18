@@ -27,28 +27,28 @@
 7️⃣ git checkout develop ❗❗
 
 # git 공동작업
-1️⃣ # git checkout main
 
-2️⃣ # git pull origin main
+1️⃣ git checkout main
 
-3️⃣ # git checkout develop
+2️⃣ git pull origin main
 
-4️⃣ # git merge main
+3️⃣ git checkout develop
+
+4️⃣ git merge main
 
 
 
-5️⃣ # git add .
+5️⃣ git add .
 
-6️⃣ # git commit -m "기능 구현 완료"
+6️⃣ git commit -m "기능 구현 완료"
 
-7️⃣ # git checkout main
+7️⃣ git checkout main
 
-8️⃣ # git merge develop
+8️⃣ git merge develop
 
-9️⃣ # git push origin main
+9️⃣ git push origin main(오류 나는 경우 -> https://soy3on.tistory.com/42)
 
 
 ### ERD 설계✏
-
-![image](https://user-images.githubusercontent.com/87464750/202099121-7925254c-9f13-42f4-ade0-3767c3d6d1b1.png)
+![image](https://user-images.githubusercontent.com/87464750/202661004-3e285eee-cbb0-42a4-9dd6-e78b43577815.png)
 

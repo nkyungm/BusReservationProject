@@ -57,19 +57,24 @@
     <div class="container">
     <div class="bg-light p-0 rounded">
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-2">
-            <a href="/timetables" class="btn btn-link btn-lg px-4 me-sm-3 fw-bold">저상버스 운행정보</a>
+            <a href="/" class="btn btn-link btn-lg px-4 me-sm-3 fw-bold">저상버스 운행정보</a>
             <a href="/reservation" class="btn btn-light btn-lg px-4">승차예약</a>
         </div>
     </div>
     </div>
 
     <hr width = "100%" color = "#506FD1">
+    <br>
 
         <div class="container">
             <div class="bg-light p-0 rounded">
                 <select onchange="location.href=this.value" name="Id" id="bus" class="form-control" style="width:100%;height:50px;" >
                     <option value="">노선선택</option>
+<<<<<<< HEAD
                     <option th:each="bus :${busList}"
+=======
+                    <option th:each="bus : ${busList}"
+>>>>>>> 7f8ea74664be82358f94caad5b0c2a158a41a900
                             th:value="${bus.name}"
                             th:text="${bus.name}"/>
                 </select>

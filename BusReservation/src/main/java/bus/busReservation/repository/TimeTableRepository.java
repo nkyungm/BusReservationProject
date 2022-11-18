@@ -9,7 +9,6 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class TimeTableRepository {
-
     private final EntityManager em;
     //All 조회
     public List<Timetable> findAll(){
@@ -22,5 +21,12 @@ public class TimeTableRepository {
                 + " where b.name like :name ", Timetable.class)
                 .setParameter("name", name)
                 .getResultList();
+    }
+    //버스 Id로 조회
+    public Timetable findById(Long id){
+        return em.createQuery("select t from Timetable t"
+                        + " where t.id = :id ", Timetable.class)
+                .setParameter("id", id)
+                .getSingleResult();
     }
 }
