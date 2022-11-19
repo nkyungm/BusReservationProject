@@ -34,7 +34,7 @@
 
 3️⃣ git checkout develop
 
-4️⃣ git merge main
+4️⃣ git merge main 
 
 
 
