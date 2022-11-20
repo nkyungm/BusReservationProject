@@ -3,6 +3,7 @@ package bus.busReservation.service;
 import bus.busReservation.domain.Timetable;
 import bus.busReservation.dto.TimetableDto;
 import bus.busReservation.repository.BusRepository;
+import bus.busReservation.repository.ReservationRepository;
 import bus.busReservation.repository.TimeTableRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ public class TimeTableService {
 
     private final TimeTableRepository timeTableRepository;
     private final BusRepository busRepository;
+    private final ReservationRepository reservationRepository;
     private final BusService busService;
 
     //버스 이름 별
@@ -62,17 +64,25 @@ public class TimeTableService {
         return timetableDtoList;
     }
     //예약된 timetable의 status를 true로 변경하기
-    public void changeStatus(Long start, Long end){
+    public void trueStatus(Long start, Long end){
         Long id = start;
 
         while(true){
             Timetable timetable = timeTableRepository.findById(id);
-            timetable.changeStatus();
+            timetable.trueStatus();
 
             if(id == end)
                 break;
 
             id++;
+        }
+    }
+
+    //예약이 완료된 timatable의 status를 false로 변경하기
+    public void falseStatus(){
+        List<Timetable> timetables = reservationRepository.findByTime();
+        for (Timetable timetable : timetables) {
+            timetable.falseStatus();
         }
     }
 }

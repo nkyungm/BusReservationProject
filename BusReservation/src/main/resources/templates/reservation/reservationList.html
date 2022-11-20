@@ -107,7 +107,7 @@
           <td th:text="${timetable.bus_name}"></td>
           <td th:text="${timetable.busStop_name}"></td>
           <td th:text="${timetable.time}"></td>
-          <th th:text="예약불가" th:if="${timetable.status == true}"></th>
+          <th th:text="예약불가-좌석없음" th:if="${timetable.status == true}"></th>
           <td>
             <a th:href="@{/reservation/{id}/{name} (id=${timetable.id}, name=${timetable.bus_name})}" class="btn btn-warning" role="button" th:if="${timetable.status == false}">예약</a>
           </td>

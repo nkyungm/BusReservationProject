@@ -36,4 +36,11 @@ public class ReservationRepository {
     public void save(Reservation reservation) {
         em.persist(reservation);
     }
+
+    //현재 시간 이전의 timetable 찾기
+    public List<Timetable> findByTime(){
+        return em.createQuery("select t from Timetable t "+
+                        " where t.time < date_format(now(),'%H:%i:%s') ", Timetable.class)
+                .getResultList();
+    }
 }

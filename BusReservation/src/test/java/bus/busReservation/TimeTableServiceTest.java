@@ -34,4 +34,5 @@ public class TimeTableServiceTest {
             System.out.println("timetable.getId() = " + timetableDto.getId());
         }
     }
+
 }

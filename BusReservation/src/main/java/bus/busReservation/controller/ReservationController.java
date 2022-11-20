@@ -29,6 +29,8 @@ public class ReservationController {
 
     @RequestMapping("/reservation/search")
     public String reservation(@RequestParam(value="keyword") String keyword,Model model){
+        timeTableService.falseStatus();//현재시간 이전의 예약된 좌석들을 다시 빈좌석으로 변경
+        
         List<TimetableDto> timetableDtoList=reservationService.findByBusStopName(keyword);
         model.addAttribute("timetableList",timetableDtoList);
 
@@ -57,7 +59,7 @@ public class ReservationController {
         Timetable end = timeTableRepository.findById(end_id);
 
         reservationService.saveReservation(1234L, start_id, end_id);//reservation table 에 예약 정보 저장
-        timeTableService.changeStatus(start_id, end_id);//timetable 의 예약 상태가 출발지~도착지까지 true 로 변경 됨
+        timeTableService.trueStatus(start_id, end_id);//timetable 의 예약 상태가 출발지~도착지까지 true 로 변경 됨
 
         model.addAttribute("start", start);
         model.addAttribute("end", end);

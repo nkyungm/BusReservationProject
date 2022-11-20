@@ -35,7 +35,7 @@ public class ReservationService {
         return timetableDtoList;
     }
 
-    //저장
+    //예약 정보
     @Transactional
     public Long saveReservation(Long userId, Long onInfoId, Long offInfoId){
         User user = userRepository.findById(userId);//사용자 정보 생성
