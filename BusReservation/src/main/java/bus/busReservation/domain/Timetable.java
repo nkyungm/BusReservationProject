@@ -32,8 +32,11 @@ public class Timetable {
     @JoinColumn(name = "bus_id", nullable = false)
     private Bus bus;
 
-    public void changeStatus(){
+    public void trueStatus(){
         this.setStatus(true);
+    }
+    public void falseStatus(){
+        this.setStatus(false);
     }
 
     public boolean isStatus() {

@@ -82,7 +82,7 @@
                 <td th:text="${timetable.bus_name}"></td>
                 <td th:text="${timetable.busStop_name}"></td>
                 <td th:text="${timetable.time}"></td>
-                <th th:text="예약불가" th:if="${timetable.status == true}"></th>
+                <th th:text="예약 불가-좌석없음" th:if="${timetable.status == true}"></th>
                 <td>
                     <a th:href="@{/complete/{start_id}/{end_id} (start_id=${start.id}, end_id=${timetable.id})}" class="btn btn-warning" role="button" th:if="${timetable.status == false}">선택</a>
                 </td>
