@@ -2,6 +2,7 @@ package bus.busReservation.controller;
 
 import bus.busReservation.domain.Bus;
 import bus.busReservation.domain.Timetable;
+import bus.busReservation.repository.TimeTableRepository;
 import bus.busReservation.service.BusService;
 import bus.busReservation.service.TimeTableService;
 import lombok.RequiredArgsConstructor;
