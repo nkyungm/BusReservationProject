@@ -29,4 +29,5 @@ public class TimeTableRepository {
                 .setParameter("id", id)
                 .getSingleResult();
     }
+
 }

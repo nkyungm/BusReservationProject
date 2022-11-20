@@ -44,10 +44,10 @@ public class TimeTableService {
 
 
         while(true){
-            Long next_bus = destination.getBus().getId();
             next_id ++;
             destination = timeTableRepository.findById(next_id);
             busStop_id = destination.getBusStop().getId();
+            Long next_bus = destination.getBus().getId();
 
             if((c == busStop_id) || (cu_bus != next_bus))
                 break;
@@ -60,5 +60,19 @@ public class TimeTableService {
                 .collect(Collectors.toList());
 
         return timetableDtoList;
+    }
+    //예약된 timetable의 status를 true로 변경하기
+    public void changeStatus(Long start, Long end){
+        Long id = start;
+
+        while(true){
+            Timetable timetable = timeTableRepository.findById(id);
+            timetable.changeStatus();
+
+            if(id == end)
+                break;
+
+            id++;
+        }
     }
 }
