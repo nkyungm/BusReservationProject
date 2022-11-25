@@ -63,11 +63,11 @@ public class TimeTableService {
 
         return timetableDtoList;
     }
-    //예약된 timetable의 status를 true로 변경하기
+    //예약된 timetable 의 status 를 true 로 변경하기
     public void trueStatus(Long start, Long end){
         Long id = start;
 
-        while(true){
+        while(true){//출발지~도착지까지 모든 정류장의 status를 true로 변경
             Timetable timetable = timeTableRepository.findById(id);
             timetable.trueStatus();
 
@@ -78,7 +78,7 @@ public class TimeTableService {
         }
     }
 
-    //예약이 완료된 timatable의 status를 false로 변경하기
+    //예약이 완료된 timetable 의 status 를 false 로 변경하기
     public void falseStatus(){
         List<Timetable> timetables = reservationRepository.findByTime();
         for (Timetable timetable : timetables) {
