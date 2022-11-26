@@ -10,7 +10,12 @@
 </div>
 </details>
 
-경민 경로 - C:\Users\AS010-7244-9414\Desktop\BusReservation\BusReservationProject 
+<details>
+<summary> 경민경로 👀 </summary>
+<div markdown="1">
+C:\Users\AS010-7244-9414\Desktop\BusReservation\BusReservationProject 
+</div>
+</details>
 
 1️⃣ git add .
 
