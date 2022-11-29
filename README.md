@@ -52,6 +52,7 @@ C:\Users\AS010-7244-9414\Desktop\BusReservation\BusReservationProject
 8️⃣ git merge develop
 
 9️⃣ git push origin main(오류 나는 경우 -> https://soy3on.tistory.com/42)
+https://right-hot.tistory.com/entry/%EA%B9%83%ED%97%88%EB%B8%8C-pull-%EC%B6%A9%EB%8F%8C-%EC%97%90%EB%9F%AC-Please-commit-your-changes-or-stash-them-before-you-merge
 
 
 ### ERD 설계✏
