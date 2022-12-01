@@ -25,4 +25,9 @@ public class User {
     private String password;
     @Column(nullable = false)
     private String role;
+
+    public String r_id(){
+        return this.id;
+    }
+
 }

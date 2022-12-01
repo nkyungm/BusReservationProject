@@ -38,44 +38,51 @@ public class TimeTableService {
         Long c = busService.findCnt(busName);//버스의 출발지
         Long next_id = id;//timetable 아이디
 
-        Timetable destination = timeTableRepository.findById(next_id);//아이디에 해당하는 timetable
-        Long cu_bus = destination.getBus().getId();//현재 버스 id
+        if(timeTableRepository.findById(next_id).isPresent()) {
+            Timetable destination = timeTableRepository.findById(next_id).get();//아이디에 해당하는 timetable
+            Long cu_bus = destination.getBus().getId();//현재 버스 id
 
-        Long busStop_id = destination.getBusStop().getId(); //정류장 id
-        list.add(destination);
-
-
-        while(true){
-            next_id ++;
-            destination = timeTableRepository.findById(next_id);
-            busStop_id = destination.getBusStop().getId();
-            Long next_bus = destination.getBus().getId();
-
-            if((c == busStop_id) || (cu_bus != next_bus))
-                break;
-
+            Long busStop_id = destination.getBusStop().getId(); //정류장 id
             list.add(destination);
+
+
+            while (true) {
+                next_id++;
+                destination = timeTableRepository.findById(next_id).get();
+                busStop_id = destination.getBusStop().getId();
+                Long next_bus = destination.getBus().getId();
+
+                if ((c == busStop_id) || (cu_bus != next_bus))
+                    break;
+
+                list.add(destination);
+            }
+
+            List<TimetableDto> timetableDtoList = list.stream()
+                    .map(t -> new TimetableDto(t))
+                    .collect(Collectors.toList());
+
+            return timetableDtoList;
         }
-
-        List<TimetableDto> timetableDtoList=list.stream()
-                .map(t-> new TimetableDto(t))
-                .collect(Collectors.toList());
-
-        return timetableDtoList;
+        return null;
     }
+
     //예약된 timetable 의 status 를 true 로 변경하기
     public void trueStatus(Long start, Long end){
         Long id = start;
 
-        while(true){//출발지~도착지까지 모든 정류장의 status를 true로 변경
-            Timetable timetable = timeTableRepository.findById(id);
-            timetable.trueStatus();
+        if(timeTableRepository.findById(id).isPresent()) {
+            while (true) {//출발지~도착지까지 모든 정류장의 status를 true로 변경
+                Timetable timetable = timeTableRepository.findById(id).get();
+                timetable.trueStatus();
 
-            if(id == end)
-                break;
+                if (id == end)
+                    break;
 
-            id++;
+                id++;
+            }
         }
+
     }
 
     //예약이 완료된 timetable 의 status 를 false 로 변경하기

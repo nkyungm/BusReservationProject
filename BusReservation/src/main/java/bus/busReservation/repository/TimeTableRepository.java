@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
@@ -23,11 +24,13 @@ public class TimeTableRepository {
                 .getResultList();
     }
     //버스 Id로 조회
-    public Timetable findById(Long id){
-        return em.createQuery("select t from Timetable t"
-                        + " where t.id = :id ", Timetable.class)
-                .setParameter("id", id)
-                .getSingleResult();
-    }
+    public Optional<Timetable> findById(Long id){
 
+        return Optional.ofNullable(
+                em.createQuery("select t from Timetable t"
+                        + " where t.id = :id", Timetable.class)
+                .setParameter("id", id)
+                .getSingleResult()
+                );
+    }
 }

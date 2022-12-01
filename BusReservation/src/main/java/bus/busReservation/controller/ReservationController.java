@@ -40,13 +40,17 @@ public class ReservationController {
     //예약-도착지 선택하는 부분
     @GetMapping("/reservation/{id}/{busName}")
     public String destination(@PathVariable("id") Long id, @PathVariable("busName") String busName, Model model ){
-        Timetable start = timeTableRepository.findById(id);
-        List<TimetableDto> destinationDtoList = timeTableService.destination(busName, id);
 
-        model.addAttribute("start", start);
-        model.addAttribute("timetableList", destinationDtoList);
+        if(timeTableRepository.findById(id).isPresent()) {
+            Timetable start = timeTableRepository.findById(id).get();
+            List<TimetableDto> destinationDtoList = timeTableService.destination(busName, id);
 
-        return "reservation/destination";
+            model.addAttribute("start", start);
+            model.addAttribute("timetableList", destinationDtoList);
+
+            return "reservation/destination";
+        }
+        return null;
     }
    /*
    * 예약완료
@@ -54,15 +58,19 @@ public class ReservationController {
     @GetMapping("/complete/{start_id}/{end_id}")
     public String completeReservation(@PathVariable("start_id") Long start_id, @PathVariable("end_id") Long end_id, Model model ){
 
-        Timetable start = timeTableRepository.findById(start_id);
-        Timetable end = timeTableRepository.findById(end_id);
+        if(timeTableRepository.findById(start_id).isPresent() && timeTableRepository.findById(end_id).isPresent()) {
+            Timetable start = timeTableRepository.findById(start_id).get();
+            Timetable end = timeTableRepository.findById(end_id).get();
 
-        //reservationService.saveReservation("1234", start_id, end_id);//reservation table 에 예약 정보 저장
-        timeTableService.trueStatus(start_id, end_id);//timetable 의 예약 상태가 출발지~도착지까지 true 로 변경 됨
+            //reservationService.saveReservation("1234", start_id, end_id);//reservation table 에 예약 정보 저장
+            timeTableService.trueStatus(start_id, end_id);//timetable 의 예약 상태가 출발지~도착지까지 true 로 변경 됨
 
-        model.addAttribute("start", start);
-        model.addAttribute("end", end);
+            model.addAttribute("start", start);
+            model.addAttribute("end", end);
 
-        return "reservation/complete";
+            return "reservation/complete";
+        }
+
+        return null;
     }
 }

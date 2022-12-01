@@ -40,12 +40,15 @@ public class ReservationService {
     public Long saveReservation(Long userId, Long onInfoId, Long offInfoId){
         User user = userRepository.findById(userId);//사용자 정보 생성
 
-        Timetable  onInfo = timeTableRepository.findById(onInfoId);//출발지 정보 생성
-        Timetable offInfo = timeTableRepository.findById(offInfoId);//도착지 정보 생성
+        if(timeTableRepository.findById(onInfoId).isPresent() && timeTableRepository.findById(offInfoId).isPresent()) {
+            Timetable onInfo = timeTableRepository.findById(onInfoId).get();//출발지 정보 생성
+            Timetable offInfo = timeTableRepository.findById(offInfoId).get();//도착지 정보 생성
 
-        Reservation reservation = Reservation.createReservation(user, onInfo, offInfo);//예약 생성
-        reservationRepository.save(reservation);//예약 저장
+            Reservation reservation = Reservation.createReservation(user, onInfo, offInfo);//예약 생성
+            reservationRepository.save(reservation);//예약 저장
 
-        return reservation.getId();
+            return reservation.getId();
+        }
+        return null;
     }
 }
