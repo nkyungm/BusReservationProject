@@ -30,9 +30,25 @@ public class UserController {
         return "user/joinForm";
     }
 
+//    @PostMapping("/join")
+//    public String join(User user){
+//        //System.out.println(user);
+//        if(user.getId().contains("user")){
+//            user.setRole("ROLE_USER");
+//        } else if (user.getId().contains("bus")) {
+//            user.setRole("ROLE_BUS");
+//        }
+//        String rawPassword=user.getPassword();
+//        String encPassword=bCryptPasswordEncoder.encode(rawPassword);
+//        user.setPassword(encPassword);
+//        userService.save(user);
+//
+//        return "redirect:/loginForm"; //redirect를 붙이면 위의 loginForm 함수로 이동
+//    }
+
     @PostMapping("/join")
-    public String join(User user){
-        System.out.println(user);
+    public String join(User user,Model model){
+        //System.out.println(user);
         if(user.getId().contains("user")){
             user.setRole("ROLE_USER");
         } else if (user.getId().contains("bus")) {
@@ -42,6 +58,7 @@ public class UserController {
         String encPassword=bCryptPasswordEncoder.encode(rawPassword);
         user.setPassword(encPassword);
         userService.save(user);
+        model.addAttribute("user",user);
 
         return "redirect:/loginForm"; //redirect를 붙이면 위의 loginForm 함수로 이동
     }
