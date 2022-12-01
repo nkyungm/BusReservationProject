@@ -1,19 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>회원가입 페이지</title>
-</head>
-<body>
-<h1>회원가입 페이지</h1>
-<hr/>
-<form action="/join" method="POST">
-    <input type="text" name="id" placeholder="Id"|><br/>
-    <input type="password" name="password" placeholder="Password"|><br/>
-    <input type="text" name="username" placeholder="Username"|><br/>
-    <input type="number" name="age" placeholder="Age"|><br/>
-    <input type="tel" name="phone" placeholder="Phone"|><br/>
-    <button>회원가입</button>
-</form>
-</body>
-</html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="cmm/layout_login">
+
+<th:block layout:fragment="f-title">회원가입</th:block>
+
+<section layout:fragment="f-content">
+
+</section>
+
+<th:block layout:fragment="f-script">
+
+</th:block>
+<section layout:fragment="f-content">
+    <div class="login_wrapper" style="margin: calc(50vh - 320px) auto 0px;">
+        <form method="post" th:action="@{/join}">
+            <div>
+                <input type="text" name="id" class="form-control" placeholder="아이디" required/>
+            </div>
+            <div>
+                <input type="password" name="password" class="form-control" placeholder="비밀번호" required/>
+            </div>
+            <div>
+                <input type="text" name="username" class="form-control" placeholder="이름" required/>
+            </div>
+            <div>
+                <input type="number" name="age" class="form-control" placeholder="나이"/>
+            </div>
+            <div style="margin-bottom: 50px;">
+                <input type="tel" name="phone" class="form-control" placeholder="전화번호"/>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-dark btn-large form-control">Join</button>
+            </div>
+        </form>
+        <hr class="separator"/>
+    </div>
+</section>

@@ -48,7 +48,6 @@ public class ReservationController {
 
         return "reservation/destination";
     }
-
    /*
    * 예약완료
    */
@@ -58,7 +57,7 @@ public class ReservationController {
         Timetable start = timeTableRepository.findById(start_id);
         Timetable end = timeTableRepository.findById(end_id);
 
-        reservationService.saveReservation(1234L, start_id, end_id);//reservation table 에 예약 정보 저장
+        //reservationService.saveReservation("1234", start_id, end_id);//reservation table 에 예약 정보 저장
         timeTableService.trueStatus(start_id, end_id);//timetable 의 예약 상태가 출발지~도착지까지 true 로 변경 됨
 
         model.addAttribute("start", start);
