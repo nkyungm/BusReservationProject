@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.hibernate.query.criteria.internal.expression.function.CurrentTimeFunction;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -41,6 +43,14 @@ public class ReservationRepository {
     public List<Timetable> findByTime(){
         return em.createQuery("select t from Timetable t "+
                         " where t.time < date_format(now(),'%H:%i:%s') ", Timetable.class)
+                .getResultList();
+    }
+
+    public List<Reservation> findByReservation(String bus_name){
+        return em.createQuery("select r from Reservation r "+
+                        "join r.onInfo start where start.bus.name=substring(:bus_name,4,3) "
+                , Reservation.class)
+                .setParameter("bus_name", bus_name)
                 .getResultList();
     }
 }

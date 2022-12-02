@@ -9,6 +9,5 @@ import java.util.List;
 @Repository
 public interface UserRepo extends JpaRepository<User,Long> {
     public User findById(String id);
-
     public User findByIdContains(String id);
 }

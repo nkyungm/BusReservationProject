@@ -21,7 +21,6 @@ public class BusService {
     public List<Bus> findAllName() {
         List<Bus> list = busRepository.findAll();
         list.remove(1);
-
         return list;
     }
 

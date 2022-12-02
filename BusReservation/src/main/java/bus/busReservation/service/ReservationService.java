@@ -3,6 +3,7 @@ package bus.busReservation.service;
 import bus.busReservation.domain.Reservation;
 import bus.busReservation.domain.Timetable;
 import bus.busReservation.domain.User;
+import bus.busReservation.dto.ReservationDto;
 import bus.busReservation.dto.TimetableDto;
 import bus.busReservation.repository.ReservationRepository;
 import bus.busReservation.repository.TimeTableRepository;
@@ -23,6 +24,7 @@ public class ReservationService {
     private final UserRepository userRepository;
     private final BusService busService;
 
+    @Transactional
     public List<TimetableDto> findByBusStopName(String keyword){
         List<Timetable> timetables=reservationRepository.findByBusStopName(keyword);
 
@@ -33,6 +35,27 @@ public class ReservationService {
         if(timetables.isEmpty()) return timetableDtoList;
 
         return timetableDtoList;
+    }
+
+    //버스기사 페이지 예약정보 찾기
+    @Transactional 
+    public List<ReservationDto> findByReservation(String bus){
+        List<Reservation> reservations=reservationRepository.findByReservation(bus);
+
+        if(bus.contains("_")){
+            List<ReservationDto> reservationDtoList=reservations.stream()
+                    .filter(r->r.getOnInfo().getBus().getId()==Integer.parseInt(bus.substring(7)))
+                    .map(r->new ReservationDto(r))
+                    .collect(Collectors.toList());
+            if(reservations.isEmpty())return reservationDtoList;
+            return reservationDtoList;
+        }else{
+            List<ReservationDto> reservationDtoList=reservations.stream()
+                    .map(r->new ReservationDto(r))
+                    .collect(Collectors.toList());
+            if(reservations.isEmpty())return reservationDtoList;
+            return reservationDtoList;
+        }
     }
 
     //예약 정보

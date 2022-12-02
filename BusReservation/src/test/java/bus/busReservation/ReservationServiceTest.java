@@ -1,5 +1,6 @@
 package bus.busReservation;
 
+import bus.busReservation.domain.Reservation;
 import bus.busReservation.domain.Timetable;
 import bus.busReservation.dto.TimetableDto;
 import bus.busReservation.repository.ReservationRepository;
@@ -8,6 +9,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,6 +40,14 @@ public class ReservationServiceTest {
         List<Timetable> timetableList = reservationRepository.findByTime();
         for (Timetable timetable : timetableList) {
             System.out.println("timetable.getTime() = " + timetable.getTime());
+        }
+    }
+
+    @Test
+    public void 예약찾기()throws Exception{
+        List<Reservation> reservations= reservationRepository.findByReservation("bus200");
+        for(Reservation reservation:reservations){
+            System.out.println("버스정류장: "+reservation.getOnInfo().getBusStop().getName());
         }
     }
 }

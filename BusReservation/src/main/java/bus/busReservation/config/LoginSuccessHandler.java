@@ -26,6 +26,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
             response.sendRedirect("/reservation");
             return;
         } else if (roleNames.contains("ROLE_BUS")) {
+            session.setAttribute("user_id",authentication.getName() + "님 반갑습니다.");
             response.sendRedirect("/bus");
             return;
         }
