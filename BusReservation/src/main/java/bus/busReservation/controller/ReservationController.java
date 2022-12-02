@@ -8,6 +8,8 @@ import bus.busReservation.repository.UserRepository;
 import bus.busReservation.service.ReservationService;
 import bus.busReservation.service.TimeTableService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,9 +31,10 @@ public class ReservationController {
 
     @RequestMapping("/reservation/search")
     public String reservation(@RequestParam(value="keyword") String keyword,Model model){
-        timeTableService.falseStatus();//현재시간 이전의 예약된 좌석들을 다시 빈좌석으로 변경
+        //timeTableService.falseStatus();//현재시간 이전의 예약된 좌석들을 다시 빈좌석으로 변경
         
         List<TimetableDto> timetableDtoList=reservationService.findByBusStopName(keyword);
+
         model.addAttribute("timetableList",timetableDtoList);
 
         return "reservation/reservationList";
@@ -43,7 +46,7 @@ public class ReservationController {
 
         if(timeTableRepository.findById(id).isPresent()) {
             Timetable start = timeTableRepository.findById(id).get();
-            List<TimetableDto> destinationDtoList = timeTableService.destination(busName, id);
+            List<TimetableDto> destinationDtoList = timeTableService.destinationList(busName, id);
 
             model.addAttribute("start", start);
             model.addAttribute("timetableList", destinationDtoList);
@@ -62,8 +65,11 @@ public class ReservationController {
             Timetable start = timeTableRepository.findById(start_id).get();
             Timetable end = timeTableRepository.findById(end_id).get();
 
-            //reservationService.saveReservation("1234", start_id, end_id);//reservation table 에 예약 정보 저장
-            timeTableService.trueStatus(start_id, end_id);//timetable 의 예약 상태가 출발지~도착지까지 true 로 변경 됨
+            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            String username = ((UserDetails)principal).getUsername();
+
+            reservationService.saveReservation(username, start_id, end_id);//reservation table 에 예약 정보 저장
+            timeTableService.changeTrue(start_id, end_id);//timetable 의 예약 상태가 출발지~도착지까지 true 로 변경 됨
 
             model.addAttribute("start", start);
             model.addAttribute("end", end);

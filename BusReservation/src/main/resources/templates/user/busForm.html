@@ -34,27 +34,39 @@
     </style>
 </head>
 <body>
+<form th:object="${reservationList}" class="form-inline">
 <div class="container my-5" >
     <div class="bg-light p-5 rounded">
         <table class="table table-hover col-sm-8 py-5 mx-auto text-center bg-light"  >
             <thead>
             <tr class="row100 head">
-                <th scope="col">출발정류장</th>
-                <th scope="col">도착정류장</th>
+                <th>출발정류장</th>
+                <th>도착정류장</th>
                 <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="reservation : ${reservationList}">
-                <td th:text="${reservation.busStart_name}"></td>
-                <td th:text="${reservation.busEnd_name}"></td>
-                <td><button class="btn btn-warning">완료</button></td>
+                <td th:text="${reservation.busStart_name}" th:if="${reservation.status.name() == '예약완료'}"></td>
+                <td th:text="${reservation.busEnd_name }" th:if="${reservation.status.name() == '예약완료'}"></td>
+                <td>
+                    <a th:if="${reservation.status.name() == '예약완료'}" href="#" th:href="'javascript:cancel('+${reservation.id}+')'"
+                       class ="btn btn-warning">완료</a>
+                </td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
-
-
+</form>
 </body>
+<script>
+    function cancel(id) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/bus/" + id + "/cancel");
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
 </html>

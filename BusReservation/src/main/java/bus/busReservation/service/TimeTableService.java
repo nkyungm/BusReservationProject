@@ -32,7 +32,7 @@ public class TimeTableService {
     }
 
     //도착지 리스트
-    public List<TimetableDto> destination(String busName, Long id){
+    public List<TimetableDto> destinationList(String busName, Long id){
 
         List<Timetable> list = new ArrayList<>();
         Long c = busService.findCnt(busName);//버스의 출발지
@@ -43,10 +43,10 @@ public class TimeTableService {
             Long cu_bus = destination.getBus().getId();//현재 버스 id
 
             Long busStop_id = destination.getBusStop().getId(); //정류장 id
-            list.add(destination);
+            //list.add(destination);
 
 
-            while (true) {
+            while (next_id < 262L) {//262이후로 타임 테이블이 없음
                 next_id++;
                 destination = timeTableRepository.findById(next_id).get();
                 busStop_id = destination.getBusStop().getId();
@@ -68,26 +68,16 @@ public class TimeTableService {
     }
 
     //예약된 timetable 의 status 를 true 로 변경하기
-    public void trueStatus(Long start, Long end){
-        Long id = start;
-
-        if(timeTableRepository.findById(id).isPresent()) {
-            while (true) {//출발지~도착지까지 모든 정류장의 status를 true로 변경
-                Timetable timetable = timeTableRepository.findById(id).get();
-                timetable.trueStatus();
-
-                if (id == end)
-                    break;
-
-                id++;
-            }
+    public void changeTrue(Long start, Long end){
+        List<Timetable> timetables = timeTableRepository.start_end_id(start, end);
+        for (Timetable timetable : timetables) {
+            timetable.trueStatus();
         }
-
     }
 
     //예약이 완료된 timetable 의 status 를 false 로 변경하기
-    public void falseStatus(){
-        List<Timetable> timetables = reservationRepository.findByTime();
+    public void changeFalse(Long start, Long end){
+        List<Timetable> timetables = timeTableRepository.start_end_id(start, end);
         for (Timetable timetable : timetables) {
             timetable.falseStatus();
         }

@@ -1,9 +1,15 @@
 package bus.busReservation.controller;
 
+import bus.busReservation.domain.Reservation;
+import bus.busReservation.domain.ReservationStatus;
+import bus.busReservation.domain.Timetable;
 import bus.busReservation.domain.User;
 import bus.busReservation.dto.ReservationDto;
 import bus.busReservation.dto.TimetableDto;
+import bus.busReservation.repository.ReservationRepository;
+import bus.busReservation.repository.TimeTableRepository;
 import bus.busReservation.service.ReservationService;
+import bus.busReservation.service.TimeTableService;
 import bus.busReservation.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +28,9 @@ public class UserController {
 
     private final UserService userService;
     private final ReservationService reservationService;
+    private final ReservationRepository reservationRepository;
+    private final TimeTableService timeTableService;
+
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder; //비밀번호 암호화
 
@@ -34,6 +43,22 @@ public class UserController {
         model.addAttribute("reservationList",reservationDtoList);
 
         return "user/busForm";
+    }
+
+    @PostMapping(value = "/bus/{reservationId}/cancel")
+    public String cancelReservation(@PathVariable("reservationId") Long reservationId){
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = ((UserDetails)principal).getUsername();
+
+        Reservation cancelReservation = reservationRepository.findById(reservationId);//완료처리할 예약 정보
+
+        Long start_id = cancelReservation.getOnInfo().getId();
+        Long end_id = cancelReservation.getOffInfo().getId();
+
+        cancelReservation.setStatus(ReservationStatus.처리완료);//예약 상태 변경
+        timeTableService.changeFalse(start_id, end_id);//timetable도 예약 상태 변경해주기
+
+        return "redirect:/bus";
     }
 
     @GetMapping("/loginForm")

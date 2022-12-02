@@ -22,7 +22,6 @@ public class ReservationService {
     private final ReservationRepository reservationRepository;
     private final TimeTableRepository timeTableRepository;
     private final UserRepository userRepository;
-    private final BusService busService;
 
     @Transactional
     public List<TimetableDto> findByBusStopName(String keyword){
@@ -60,7 +59,7 @@ public class ReservationService {
 
     //예약 정보
     @Transactional
-    public Long saveReservation(Long userId, Long onInfoId, Long offInfoId){
+    public Long saveReservation(String userId, Long onInfoId, Long offInfoId){
         User user = userRepository.findById(userId);//사용자 정보 생성
 
         if(timeTableRepository.findById(onInfoId).isPresent() && timeTableRepository.findById(offInfoId).isPresent()) {

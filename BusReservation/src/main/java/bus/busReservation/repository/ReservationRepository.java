@@ -53,4 +53,11 @@ public class ReservationRepository {
                 .setParameter("bus_name", bus_name)
                 .getResultList();
     }
+
+    public Reservation findById(Long id){
+        return em.createQuery("select r from Reservation r"
+        + " where r.id = :id", Reservation.class)
+                .setParameter("id", id)
+                .getSingleResult();
+    }
 }

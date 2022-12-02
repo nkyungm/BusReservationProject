@@ -2,6 +2,8 @@ package bus.busReservation.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,9 +27,5 @@ public class User {
     private String password;
     @Column(nullable = false)
     private String role;
-
-    public String r_id(){
-        return this.id;
-    }
 
 }

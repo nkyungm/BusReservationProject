@@ -14,7 +14,7 @@ public class UserRepository{
     private final EntityManager em;
 
     //아이디로 사용자 조회
-    public User findById(Long id){
+    public User findById(String id){
         return em.createQuery("select u from User u"
                         + " where u.id = :id ", User.class)
                 .setParameter("id", id)
