@@ -57,5 +57,5 @@ C:\Users\AS010-7244-9414\Desktop\BusReservation\BusReservationProject
 
 
 ### ERD 설계✏
-![image](https://user-images.githubusercontent.com/87464750/202661004-3e285eee-cbb0-42a4-9dd6-e78b43577815.png)
+![image](https://user-images.githubusercontent.com/87464750/205438950-d8b5b298-bb0e-4f48-9f54-423ae34cb402.png)
 
