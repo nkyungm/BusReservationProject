@@ -67,6 +67,24 @@ public class TimeTableService {
         return null;
     }
 
+    //해당 버스의 종점을 찾기
+    public Long findEndId(Long id){
+        Long next_id = id;
+        while(next_id <262L){
+            next_id ++;
+
+            if(timeTableRepository.findById(next_id).isPresent()) {
+                Timetable timetable = timeTableRepository.findById(next_id).get();
+                String end = timetable.getEnd();
+
+                if (end.equals("종점"))
+                    return next_id;
+            }
+        }
+
+        return null;
+    }
+
     //예약된 timetable 의 status 를 true 로 변경하기
     public void changeTrue(Long start, Long end){
         List<Timetable> timetables = timeTableRepository.start_end_id(start, end);
@@ -82,4 +100,26 @@ public class TimeTableService {
             timetable.falseStatus();
         }
     }
+
+    public Long NoReservation(Long start, Long end){//사이에 예약자가 있는지 확인
+        List<Timetable> timetables = timeTableRepository.start_end_id(start, end);
+
+        for (Timetable timetable : timetables) {
+            if(timetable.isStatus() == true)
+                return timetable.getId();
+        }
+        return start;
+    }
+
+    public List<Long> NoList(Long start, Long end)
+    {
+        List<Long> lists = new ArrayList<>();
+        List<Timetable> timetables = timeTableRepository.start_end_id(start, end);
+        for (Timetable timetable : timetables) {
+            lists.add(timetable.getId());
+        }
+
+        return lists;
+    }
+
 }

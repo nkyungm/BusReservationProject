@@ -45,15 +45,15 @@ public class UserController {
         return "user/busForm";
     }
 
-    @PostMapping(value = "/bus/{reservationId}/cancel")
+    @PostMapping(value = "/bus/{reservationId}/cancel")//버스앱에서 완료 누르는 부분
     public String cancelReservation(@PathVariable("reservationId") Long reservationId){
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = ((UserDetails)principal).getUsername();
 
         Reservation cancelReservation = reservationRepository.findById(reservationId);//완료처리할 예약 정보
 
-        Long start_id = cancelReservation.getOnInfo().getId();
-        Long end_id = cancelReservation.getOffInfo().getId();
+        Long start_id = cancelReservation.getOnInfo().getId();//출발지 정보
+        Long end_id = cancelReservation.getOffInfo().getId();//도착지
 
         cancelReservation.setStatus(ReservationStatus.처리완료);//예약 상태 변경
         timeTableService.changeFalse(start_id, end_id);//timetable도 예약 상태 변경해주기
