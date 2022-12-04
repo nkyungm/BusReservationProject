@@ -23,7 +23,7 @@ public class TimeTableRepository {
                 .setParameter("name", name)
                 .getResultList();
     }
-    //버스 Id로 조회
+    //timetable Id로 조회
     public Optional<Timetable> findById(Long id){
         return Optional.ofNullable(
                 em.createQuery("select t from Timetable t"
@@ -39,4 +39,5 @@ public class TimeTableRepository {
                         .setParameter("end_id", end)
                 .getResultList();
     }
+
 }

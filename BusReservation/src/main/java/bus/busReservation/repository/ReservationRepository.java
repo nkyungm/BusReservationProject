@@ -34,6 +34,16 @@ public class ReservationRepository {
                 .getResultList();
     }
 
+    //밤에 Test 할때 쓸라궁
+    public List<Timetable> TestBusStopName(String name) {
+        return em.createQuery("select t from Timetable t "+
+                        "join t.busStop s" +
+                        " where s.name like concat('%',:name,'%') " +
+                        "group by t.bus.name,s.name order by t.time asc", Timetable.class)
+                .setParameter("name", name)
+                .getResultList();
+    }
+
     //예약 정보 저장
     public void save(Reservation reservation) {
         em.persist(reservation);
@@ -48,7 +58,7 @@ public class ReservationRepository {
 
     public List<Reservation> findByReservation(String bus_name){
         return em.createQuery("select r from Reservation r "+
-                        "join r.onInfo start where start.bus.name=substring(:bus_name,4,3) "
+                        "join r.onInfo start where start.bus.name=substring(:bus_name,4,3) and r.status = '예약완료'"//상태정보 추가했어용
                 , Reservation.class)
                 .setParameter("bus_name", bus_name)
                 .getResultList();

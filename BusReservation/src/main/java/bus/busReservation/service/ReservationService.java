@@ -36,6 +36,21 @@ public class ReservationService {
         return timetableDtoList;
     }
 
+    //Test
+    @Transactional
+    public List<TimetableDto> TestBusStopName(String keyword){
+        List<Timetable> timetables=reservationRepository.TestBusStopName(keyword);
+
+        List<TimetableDto> timetableDtoList=timetables.stream()
+                .map(t-> new TimetableDto(t))
+                .collect(Collectors.toList());
+
+        if(timetables.isEmpty()) return timetableDtoList;
+
+        return timetableDtoList;
+    }
+
+
     //버스기사 페이지 예약정보 찾기
     @Transactional 
     public List<ReservationDto> findByReservation(String bus){

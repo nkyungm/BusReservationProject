@@ -32,6 +32,9 @@ public class Timetable {
     @JoinColumn(name = "bus_id", nullable = false)
     private Bus bus;
 
+    @Column(name = "종점")
+    private String end;
+
     public void trueStatus(){
         this.setStatus(true);
     }
