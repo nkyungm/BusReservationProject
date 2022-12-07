@@ -41,7 +41,7 @@ C:\Users\AS010-7244-9414\Desktop\BusReservation\BusReservationProject
 
 4️⃣ git merge main 
 
-## - pull 안될 경우 : https://programming119.tistory.com/109
+### - pull 안될 경우 : https://programming119.tistory.com/109
 
 5️⃣ git add .
 
