@@ -31,7 +31,7 @@ C:\Users\AS010-7244-9414\Desktop\BusReservation\BusReservationProject
 
 7️⃣ git checkout develop ❗❗
 
-# git 공동작업!
+# git 공동작업
 
 1️⃣ git checkout main
 
