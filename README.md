@@ -11,7 +11,7 @@
 </details>
 
 <details>
-<summary> 경민경로 👀 !! </summary>
+<summary> 경민경로 👀 ! </summary>
 <div markdown="1">
 C:\Users\AS010-7244-9414\Desktop\BusReservation\BusReservationProject 
 </div>
